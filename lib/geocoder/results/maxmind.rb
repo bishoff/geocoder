@@ -77,13 +77,13 @@ module Geocoder::Result
     # end
     def service_name
       Geocoder::Result::Maxmind.field_names
-      ip_lookup = @data[:ip_lookup]
-      service = @data[ip_lookup][:service]
-      if Geocoder::Result::Maxmind.field_names.include?(service)
-        service
-      else
-        nil
-      end
+      ip_lookup = @data.ip_lookup
+      # service = @data[ip_lookup][:service]
+      # if Geocoder::Result::Maxmind.field_names.include?(service)
+      #   service
+      # else
+      #   nil
+      # end
     end
 
     def field_names
