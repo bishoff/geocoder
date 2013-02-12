@@ -70,10 +70,13 @@ module Geocoder::Result
     # Inferred from format of @data.
     #
     def service_name
-      self.class.field_names.to_a.each do |n,f|
-        return n if (@data.size..@data.size+1).include?(f.size)
+      service = @data.try(@data.ip_lookup)[:service]
+      if field_names.include?(service)
+        service
+      else
+        service = nil
       end
-      nil
+      service
     end
 
     def field_names
