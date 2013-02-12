@@ -70,8 +70,9 @@ module Geocoder::Result
     # Inferred from format of @data.
     #
     def service_name
+      Geocoder::Result::Maxmind.field_names
       service = @data.try(@data[:ip_lookup])[:service]
-      if field_names.include?(service)
+      if Geocoder::Result::Maxmind.field_names.include?(service)
         service
       else
         service = nil
