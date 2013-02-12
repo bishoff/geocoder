@@ -70,7 +70,7 @@ module Geocoder::Result
     # Inferred from format of @data.
     #
     def service_name
-      service = @data.try(@data.ip_lookup)[:service]
+      service = @data.try(@data[:ip_lookup])[:service]
       if field_names.include?(service)
         service
       else
