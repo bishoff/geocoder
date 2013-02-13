@@ -69,24 +69,17 @@ module Geocoder::Result
     # Name of the MaxMind service being used.
     # Inferred from format of @data.
     #
+=begin
     def service_name
-      # self.class.field_names.to_a.each do |n,f|
-      #   return n if (@data.size..@data.size+1).include?(f.size)
-      # end
-      # nil
+      self.class.field_names.to_a.each do |n,f|
+        return n if (@data.size..@data.size+1).include?(f.size)
+      end
+      nil
+    end
+=end
+    def service_name
       :city
     end
-    # def service_name
-    #   Geocoder::Result::Maxmind.field_names
-    #   ip_lookup = @data.ip_lookup
-
-    #   # service = @data[ip_lookup][:service]
-    #   # if Geocoder::Result::Maxmind.field_names.include?(service)
-    #   #   service
-    #   # else
-    #   #   nil
-    #   # end
-    # end
 
     def field_names
       self.class.field_names[service_name]
