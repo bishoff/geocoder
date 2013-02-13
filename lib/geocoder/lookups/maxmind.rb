@@ -75,7 +75,18 @@ module Geocoder::Lookup
     end
 
     def reserved_result
-      ",,,,0,0,0,0,,,"
+      {
+        "ip"           => ip,
+        "city"         => "Reserved",
+        "region_code"  => "RD",
+        "region_name"  => "",
+        "metrocode"    => "",
+        "zipcode"      => "",
+        "latitude"     => "0",
+        "longitude"    => "0",
+        "country_name" => "Reserved",
+        "country_code" => "RD"
+      }
     end
 
     def query_url_params(query)
